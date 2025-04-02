@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/src/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script>
+        window.FontAwesomeConfig = {
+            autoReplaceSvg: 'nest', // Options: 'nest', 'remove', 'replace'
+        };
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <style>
+        * {
+          font-family: "Inter", sans-serif;
+        }
+      
+        ::-webkit-scrollbar {
+          display: none;
+        }
+      </style>
+      
+          
+      <style>
+        .highlighted-section {
+          outline: 2px solid #3F20FB;
+          background-color: rgba(63, 32, 251, 0.1);
+        }
+      
+        .edit-button {
+          position: absolute;
+          z-index: 1000;
+        }
+      </style>
+
+<style>
+    /* Dark mode styles */
+    .dark body {
+        background-color: #1f2937;
+        color: #f9fafb;
+    }
+    
+    .dark .bg-white, .dark .bg-gray-50 {
+        background-color: #374151;
+    }
+    
+    .dark .text-gray-600 {
+        color: #d1d5db;
+    }
+    
+    .dark .text-\[\#001845\] {
+        color: #f9fafb;
+    }
+    
+    .dark .bg-blue-100 {
+        background-color: rgba(59, 130, 246, 0.2);
+    }
+    
+    /* Mobile menu styles */
+    .mobile-menu {
+        display: none;
+        position: fixed;
+        top: 80px;
+        left: 0;
+        right: 0;
+        background-color: white;
+        padding: 1rem;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        z-index: 40;
+        flex-direction: column;
+    }
+    
+    .mobile-menu.active {
+        display: flex;
+    }
+    
+    .mobile-menu a {
+        padding: 0.75rem 0;
+        border-bottom: 1px solid #e5e7eb;
+        color: #4b5563;
+    }
+    
+    .dark .mobile-menu {
+        background-color: #374151;
+    }
+    
+    .dark .mobile-menu a {
+        border-color: #4b5563;
+        color: #f9fafb;
+    }
+    </style>
+
+</head>
+
+<body class="h-full text-base-content">
+                    <div class="min-h-screen bg-gray-50">
+        <!-- Header -->
+        <header id="header" class="fixed w-full bg-white shadow-sm z-50">
+            <nav class="container mx-auto px-6 py-4">
+                <div class="flex items-center justify-between">
+                    <span class="text-2xl font-bold text-[#0466c8] cursor-pointer"><a href="home.html">DB.Admin</a></span>
+                    <div class="hidden md:flex items-center space-x-8">
+                        <a href="home.html" class="text-[#001845] hover:text-[#001845] cursor-pointer">Home</a>
+                        <a href="about.html" class="text-gray-600 hover:text-[#001845] cursor-pointer">About</a>
+                        <a href="certificates.html" class="text-gray-600  hover:text-[#001845] cursor-pointer">Certificates</a>
+                        <a href="projects.html" class="text-gray-600 border-b-2 border-[#0466c8] cursor-pointer">Projects</a>
+                        <a href="contact.html" class="text-gray-600 hover:text-[#001845] cursor-pointer">Contact</a>
+                    </div>
+                    <button type="button" id="mobile-menu-toggle" aria-label="Open menu" class="md:hidden text-[#001845]">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </nav>
+        </header>
+    
+       <!-- Mobile Menu -->
+<div id="mobile-menu" class="mobile-menu">
+    <a href="home.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="certificates.html">Certificates</a>
+    <a href="projects.html" class="font-medium">Projects</a>
+    <a href="contact.html">Contact</a>
+</div>
+    
+        <!-- Main Content -->
+        <section id="projects" class="pt-32 px-6">
+            <div class="container mx-auto">
+                <!-- Section Title -->
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-[#001845]">Featured Projects</h2>
+                    <div class="w-24 h-1 bg-[#0466c8] mx-auto mt-4"></div>
+                </div>
+    
+                <!-- Projects Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Project Card 1 -->
+                    <div id="project-1" class="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                        <img class="w-full h-48 object-cover rounded-t-xl" src="/src/assets/images/Opsview_Monitor-1024x576.jpg" alt="database dashboard interface with graphs and monitoring stats, modern UI design" >
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-[#001845] mb-3">Database Monitoring System</h3>
+                            <p class="text-gray-600 mb-4">A comprehensive dashboard for real-time database performance monitoring and analytics tracking.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-blue-100 text-[#0466c8] rounded-full text-sm">MySQL</span>
+                                <span class="px-3 py-1 bg-blue-100 text-[#0466c8] rounded-full text-sm">Python</span>
+                                <span class="px-3 py-1 bg-blue-100 text-[#0466c8] rounded-full text-sm">React</span>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <!-- Project Card 2 -->
+                    <div id="project-2" class="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                        <img class="w-full h-48 object-cover rounded-t-xl" src="/src/assets/images/00IBj7QgR0HtuwfikyDdyTq-12.webp" alt="data backup and recovery system interface, modern minimal design" >
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-[#001845] mb-3">Backup Automation Tool</h3>
+                            <p class="text-gray-600 mb-4">Automated backup solution with scheduling, compression, and multi-location sync capabilities.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-blue-100 text-[#0466c8] rounded-full text-sm">PostgreSQL</span>
+                                <span class="px-3 py-1 bg-blue-100 text-[#0466c8] rounded-full text-sm">Shell</span>
+                                <span class="px-3 py-1 bg-blue-100 text-[#0466c8] rounded-full text-sm">AWS</span>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <!-- Project Card 3 -->
+                    <div id="project-3" class="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                        <img class="w-full h-48 object-cover rounded-t-xl" src="/src/assets/images/data-migration.webp" alt="data migration tool interface with progress tracking, clean modern design" >
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-[#001845] mb-3">Data Migration Suite</h3>
+                            <p class="text-gray-600 mb-4">Enterprise-grade data migration tool with progress tracking and error handling.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-blue-100 text-[#0466c8] rounded-full text-sm">Oracle</span>
+                                <span class="px-3 py-1 bg-blue-100 text-[#0466c8] rounded-full text-sm">Java</span>
+                                <span class="px-3 py-1 bg-blue-100 text-[#0466c8] rounded-full text-sm">Docker</span>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <!-- Project Card 4 -->
+                    <div id="project-4" class="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                        <img class="w-full h-48 object-cover rounded-t-xl" src="/src/assets/images/audit.png" alt="security audit dashboard with threat detection, dark theme interface" >
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-[#001845] mb-3">Security Audit System</h3>
+                            <p class="text-gray-600 mb-4">Advanced security monitoring and audit logging system for database access control.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-blue-100 text-[#0466c8] rounded-full text-sm">MongoDB</span>
+                                <span class="px-3 py-1 bg-blue-100 text-[#0466c8] rounded-full text-sm">Node.js</span>
+                                <span class="px-3 py-1 bg-blue-100 text-[#0466c8] rounded-full text-sm">Redis</span>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <!-- Project Card 5 -->
+                    <div id="project-5" class="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                        <img class="w-full h-48 object-cover rounded-t-xl" src="/src/assets/images/Classification-of-query-optimization-techniques.png" alt="performance optimization tool with server metrics, modern UI" >
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-[#001845] mb-3">Query Optimizer</h3>
+                            <p class="text-gray-600 mb-4">SQL query optimization tool with performance analytics and recommendations.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-blue-100 text-[#0466c8] rounded-full text-sm">SQL Server</span>
+                                <span class="px-3 py-1 bg-blue-100 text-[#0466c8] rounded-full text-sm">C#</span>
+                                <span class="px-3 py-1 bg-blue-100 text-[#0466c8] rounded-full text-sm">.NET</span>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <!-- Project Card 6 -->
+                    <div id="project-6" class="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                        <img class="w-full h-48 object-cover rounded-t-xl" src="/src/assets/images/schema.png" alt="database schema visualization tool, modern minimalist interface" >
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-[#001845] mb-3">Schema Visualizer</h3>
+                            <p class="text-gray-600 mb-4">Interactive database schema visualization and documentation generator.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-blue-100 text-[#0466c8] rounded-full text-sm">GraphQL</span>
+                                <span class="px-3 py-1 bg-blue-100 text-[#0466c8] rounded-full text-sm">Vue.js</span>
+                                <span class="px-3 py-1 bg-blue-100 text-[#0466c8] rounded-full text-sm">D3.js</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <!-- Footer -->
+        <footer id="footer" class="bg-[#001845] text-white mt-20">
+            <div class="container mx-auto px-6 py-12">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4">About Me</h3>
+                        <p class="text-gray-300 mb-4">Dedicated database administrator with a passion for optimizing data systems and ensuring seamless operations.</p>
+                        <div class="flex space-x-4 text-xl">
+                            <i class="fa-brands fa-linkedin cursor-pointer hover:text-[#0466c8]"></i>
+                            <i class="fa-brands fa-github cursor-pointer hover:text-[#0466c8]"></i>
+                            <i class="fa-brands fa-facebook cursor-pointer hover:text-[#0466c8]"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4">Quick Links</h3>
+                        <ul class="space-y-2">
+                            <li><a href="home.html"  class="text-gray-300 hover:text-white cursor-pointer">Home</a></li>
+                            <li> <a href="about.html"  class="text-gray-300 hover:text-white cursor-pointer">About</a></li>
+                            <li><a href="certificates.html" class="text-gray-300 hover:text-white cursor-pointer">Certificates</a></li>
+                            <li> <a href="projects.html"  class="text-gray-300 hover:text-white cursor-pointer">Projects</a></li>
+                            <li><a href="contact.html"  class="text-gray-300 hover:text-white cursor-pointer">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4">Contact Info</h3>
+                        <ul class="space-y-2">
+                            <li class="flex items-center space-x-2">
+                                <i class="fa-regular fa-envelope"></i>
+                                <span>cortez@dbadmin.com</span>
+                            </li>
+                            <li class="flex items-center space-x-2">
+                                <i class="fa-solid fa-phone"></i>
+                                <span>+63 912 032 7293</span>
+                            </li>
+                            <li class="flex items-center space-x-2">
+                                <i class="fa-solid fa-location-dot"></i>
+                                <span>Pilar, Bataan, Philippines</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="border-t border-gray-700 mt-12 pt-6 text-center text-gray-400">
+                    <p>&copy; 2025 DB.Admin. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+    
+        <!-- Dark Mode Toggle -->
+        <button type="button" id="dark-mode-toggle" aria-label="Toggle Dark Mode" class="fixed bottom-6 right-6 w-12 h-12 bg-[#0466c8] text-white rounded-full shadow-lg flex items-center justify-center hover:bg-[#0353a4] transition">
+            <i class="fa-solid fa-moon" id="moon-icon"></i>
+            <i class="fa-solid fa-sun" id="sun-icon" style="display: none;"></i>
+        </button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Dark Mode Toggle
+            const darkModeToggle = document.getElementById('dark-mode-toggle');
+            const htmlElement = document.documentElement;
+            const moonIcon = document.getElementById('moon-icon');
+            const sunIcon = document.getElementById('sun-icon');
+            
+            function toggleDarkMode() {
+                htmlElement.classList.toggle('dark');
+                
+                if (htmlElement.classList.contains('dark')) {
+                    moonIcon.style.display = 'none';
+                    sunIcon.style.display = 'block';
+                    try { localStorage.setItem('theme', 'dark'); } catch (e) {}
+                } else {
+                    moonIcon.style.display = 'block';
+                    sunIcon.style.display = 'none';
+                    try { localStorage.setItem('theme', 'light'); } catch (e) {}
+                }
+            }
+            
+            try {
+                if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                    htmlElement.classList.add('dark');
+                    moonIcon.style.display = 'none';
+                    sunIcon.style.display = 'block';
+                }
+            } catch (e) {}
+            
+            darkModeToggle.addEventListener('click', toggleDarkMode);
+            
+            // Mobile Menu Toggle
+            const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            if (mobileMenuToggle && mobileMenu) {
+                mobileMenuToggle.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('active');
+                    const icon = mobileMenuToggle.querySelector('i');
+                    if (mobileMenu.classList.contains('active')) {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-times');
+                    } else {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+                
+                document.addEventListener('click', function(event) {
+                    if (!mobileMenu.contains(event.target) && !mobileMenuToggle.contains(event.target) && mobileMenu.classList.contains('active')) {
+                        mobileMenu.classList.remove('active');
+                        const icon = mobileMenuToggle.querySelector('i');
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
+            

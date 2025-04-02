@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/src/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script>
+        window.FontAwesomeConfig = {
+            autoReplaceSvg: 'nest', // Options: 'nest', 'remove', 'replace'
+        };
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <style>
+        * {
+          font-family: "Inter", sans-serif;
+        }
+      
+        ::-webkit-scrollbar {
+          display: none;
+        }
+      </style>
+      
+          
+      <style>
+        .highlighted-section {
+          outline: 2px solid #3F20FB;
+          background-color: rgba(63, 32, 251, 0.1);
+        }
+      
+        .edit-button {
+          position: absolute;
+          z-index: 1000;
+        }
+      </style>
+
+<style>
+    /* Dark mode styles */
+    .dark body {
+        background-color: #1f2937;
+        color: #f9fafb;
+    }
+    
+    .dark .bg-white {
+        background-color: #374151;
+    }
+    
+    .dark .bg-gray-50 {
+        background-color: #1f2937;
+    }
+    
+    .dark .text-gray-600,
+    .dark .text-gray-700 {
+        color: #d1d5db;
+    }
+    
+    .dark .text-\[\#001845\] {
+        color: #f9fafb;
+    }
+    
+    .dark .bg-blue-100 {
+        background-color: rgba(59, 130, 246, 0.2);
+    }
+    
+    .dark .text-\[\#0466c8\] {
+        color: #60a5fa;
+    }
+    
+    /* Mobile menu styles */
+    .mobile-menu {
+        display: none;
+        position: fixed;
+        top: 80px;
+        left: 0;
+        right: 0;
+        background-color: white;
+        padding: 1rem;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        z-index: 40;
+        flex-direction: column;
+    }
+    
+    .mobile-menu.active {
+        display: flex;
+    }
+    
+    .mobile-menu a {
+        padding: 0.75rem 0;
+        border-bottom: 1px solid #e5e7eb;
+    }
+    
+    .dark .mobile-menu {
+        background-color: #374151;
+    }
+    
+    .dark .mobile-menu a {
+        border-color: #4b5563;
+        color: #f9fafb;
+    }
+
+    /* Timeline styles in dark mode */
+    .dark .bg-\[\#0466c8\] {
+        background-color: #3b82f6;
+    }
+ </style>
+
+</head>
+
+<html class="">
+              
+
+              <body class="h-full text-base-content">
+                <div class="min-h-screen bg-gray-50">
+    <!-- Header -->
+    <header id="header" class="fixed w-full bg-white shadow-sm z-50">
+        <div class="container mx-auto px-4">
+            <nav class="flex items-center justify-between h-20">
+                <span class="text-2xl font-bold text-[#0466c8] cursor-pointer"><a href="home.html">DB.Admin</a></span>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="home.html" class="text-[#001845]  hover:text-[#001845] cursor-pointer">Home</a>
+                    <a href="about.html" class="text-gray-600 border-b-2 border-[#0466c8] cursor-pointer">About</a>
+                    <a href="certificates.html" class="text-gray-600 hover:text-[#001845] cursor-pointer">Certificates</a>
+                    <a href="projects.html" class="text-gray-600 hover:text-[#001845] cursor-pointer">Projects</a>
+                    <a href="contact.html" class="text-gray-600 hover:text-[#001845] cursor-pointer">Contact</a>
+                </div>
+
+                <button type="button" id="mobile-menu-toggle" aria-label="Open menu" class="md:hidden text-[#001845]">
+                    <i class="fa-solid fa-bars text-2xl"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+
+    <!-- Mobile Menu -->
+<div id="mobile-menu" class="mobile-menu">
+    <a href="home.html">Home</a>
+    <a href="about.html" class="font-medium">About</a>
+    <a href="certificates.html">Certificates</a>
+    <a href="projects.html">Projects</a>
+    <a href="contact.html">Contact</a>
+</div>
+
+    <!-- Main Content -->
+    <main class="pt-20">
+        <!-- About Section -->
+        <section id="about-hero" class="py-16 bg-white">
+            <div class="container mx-auto px-4">
+                <h1 class="text-4xl font-bold text-[#001845] mb-2">About Me</h1>
+                <div class="w-20 h-1 bg-[#0466c8] mb-12"></div>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div id="background-card" class="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                        <h2 class="text-2xl font-bold text-[#001845] mb-6">Professional Background</h2>
+                        <p class="text-gray-700 mb-4">With over 8 years of experience in database administration and architecture, I specialize in designing, implementing, and maintaining robust database solutions for enterprise-level applications.</p>
+                        <p class="text-gray-700">My expertise spans across various database technologies, with a focus on performance optimization, security implementation, and disaster recovery planning.</p>
+                    </div>
+                    
+                    <div id="skills-card" class="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                        <h2 class="text-2xl font-bold text-[#001845] mb-6">Technical Skills</h2>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-4 py-2 bg-blue-100 text-[#0466c8] rounded-full">SQL Server</span>
+                            <span class="px-4 py-2 bg-blue-100 text-[#0466c8] rounded-full">Oracle</span>
+                            <span class="px-4 py-2 bg-blue-100 text-[#0466c8] rounded-full">PostgreSQL</span>
+                            <span class="px-4 py-2 bg-blue-100 text-[#0466c8] rounded-full">MongoDB</span>
+                            <span class="px-4 py-2 bg-blue-100 text-[#0466c8] rounded-full">Data Modeling</span>
+                            <span class="px-4 py-2 bg-blue-100 text-[#0466c8] rounded-full">Performance Tuning</span>
+                            <span class="px-4 py-2 bg-blue-100 text-[#0466c8] rounded-full">Backup & Recovery</span>
+                            <span class="px-4 py-2 bg-blue-100 text-[#0466c8] rounded-full">High Availability</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="py-16 bg-gray-50">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-[#001845] mb-12">Professional Experience</h2>
+                
+                <div class="space-y-8">
+                    <div id="exp-1" class="flex">
+                        <div class="w-16 flex-shrink-0 relative">
+                            <div class="w-4 h-4 bg-[#0466c8] rounded-full"></div>
+                            <div class="w-0.5 h-full bg-[#0466c8] absolute left-2 top-4"></div>
+                        </div>
+                        <div class="flex-grow bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                            <div class="text-sm text-[#0466c8] font-semibold mb-2">2023 - Present</div>
+                            <h3 class="text-xl font-bold text-[#001845] mb-2">Senior Database Administrator</h3>
+                            <p class="text-gray-600 mb-4">TechCorp Solutions</p>
+                            <ul class="list-disc list-inside text-gray-700 space-y-2">
+                                <li>Lead a team of 5 database administrators</li>
+                                <li>Implemented high-availability solutions reducing downtime by 99.9%</li>
+                                <li>Optimized database performance resulting in 40% faster query execution</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div id="exp-2" class="flex">
+                        <div class="w-16 flex-shrink-0 relative">
+                            <div class="w-4 h-4 bg-[#0466c8] rounded-full"></div>
+                            <div class="w-0.5 h-full bg-[#0466c8] absolute left-2 top-4"></div>
+                        </div>
+                        <div class="flex-grow bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                            <div class="text-sm text-[#0466c8] font-semibold mb-2">2020 - 2023</div>
+                            <h3 class="text-xl font-bold text-[#001845] mb-2">Database Administrator</h3>
+                            <p class="text-gray-600 mb-4">DataFlow Systems</p>
+                            <ul class="list-disc list-inside text-gray-700 space-y-2">
+                                <li>Managed large-scale database infrastructure</li>
+                                <li>Implemented automated backup and recovery procedures</li>
+                                <li>Reduced database storage costs by 30%</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer" class="bg-[#0353a4] text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">About Me</h3>
+                    <p class="text-gray-300 mb-4">Dedicated database administrator with a passion for optimizing and securing data infrastructure.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" aria-label="Visit my linkedin page" class="text-white hover:text-gray-300">
+                            <i class="fa-brands fa-linkedin text-2xl"></i>
+                        </a>
+                        <a href="#" aria-label="Visit my github" class="text-white hover:text-gray-300">
+                            <i class="fa-brands fa-github text-2xl"></i>
+                        </a>
+                        <a href="#" aria-label="Visit my Twitter page" class="text-white hover:text-gray-300">
+                            <i class="fa-brands fa-twitter text-2xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="home.html"  class="text-gray-300 hover:text-white cursor-pointer">Home</a></li>
+                        <li> <a href="about.html"  class="text-gray-300 hover:text-white cursor-pointer">About</a></li>
+                        <li><a href="certificates.html" class="text-gray-300 hover:text-white cursor-pointer">Certificates</a></li>
+                        <li> <a href="projects.html"  class="text-gray-300 hover:text-white cursor-pointer">Projects</a></li>
+                        <li><a href="contact.html"  class="text-gray-300 hover:text-white cursor-pointer">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Contact Info</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fa-regular fa-envelope mr-2"></i>
+                            cortez@dbadmin.com
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa-solid fa-phone mr-2"></i>
+                            +63 912 032 7293
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa-solid fa-location-dot mr-2"></i>
+                            Pilar, Bataan, Philippines
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-600 mt-8 pt-8 text-center">
+                <p class="text-gray-400">&copy; 2025 DB.Admin. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Dark Mode Toggle -->
+    <button type="button" id="dark-mode-toggle" aria-label="Toggle Dark Mode" class="fixed bottom-6 right-6 w-12 h-12 bg-[#0466c8] text-white rounded-full shadow-lg flex items-center justify-center hover:bg-[#0353a4] transition">
+        <i class="fa-solid fa-moon" id="moon-icon"></i>
+        <i class="fa-solid fa-sun" id="sun-icon" style="display:none"></i>
+    </button>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Dark Mode Toggle
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        const htmlElement = document.documentElement;
+        const moonIcon = document.getElementById('moon-icon');
+        const sunIcon = document.getElementById('sun-icon');
+        
+     
+        function toggleDarkMode() {
+            htmlElement.classList.toggle('dark');
+            
+            if (htmlElement.classList.contains('dark')) {
+                moonIcon.style.display = 'none';
+                sunIcon.style.display = 'block';
+                
+                
+                try {
+                    localStorage.setItem('theme', 'dark');
+                } catch (e) {
+                    console.warn('Unable to access localStorage');
+                }
+            } else {
+                moonIcon.style.display = 'block';
+                sunIcon.style.display = 'none';
+                
+                
+                try {
+                    localStorage.setItem('theme', 'light');
+                } catch (e) {
+                    console.warn('Unable to access localStorage');
+                }
+            }
+        }
+        
+        
+        try {
+            if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                htmlElement.classList.add('dark');
+                moonIcon.style.display = 'none';
+                sunIcon.style.display = 'block';
+            }
+        } catch (e) {
+            console.warn('Unable to access localStorage for reading theme preference');
+        }
+        
+        
+        darkModeToggle.addEventListener('click', toggleDarkMode);
+        
+        // Mobile Menu Toggle
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        if (mobileMenuToggle && mobileMenu) {
+            mobileMenuToggle.addEventListener('click', function() {
+                mobileMenu.classList.toggle('active');
+                
+               
+                const icon = mobileMenuToggle.querySelector('i');
+                if (mobileMenu.classList.contains('active')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+            
+           
+            document.addEventListener('click', function(event) {
+                if (!mobileMenu.contains(event.target) && !mobileMenuToggle.contains(event.target)) {
+                    mobileMenu.classList.remove('active');
+                    const icon = mobileMenuToggle.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+        }
+    });
+</script>
+</body>
+</html>
+          

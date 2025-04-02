@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/src/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script>
+        window.FontAwesomeConfig = {
+            autoReplaceSvg: 'nest', // Options: 'nest', 'remove', 'replace'
+        };
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <style>
+        * {
+          font-family: "Inter", sans-serif;
+        }
+      
+        ::-webkit-scrollbar {
+          display: none;
+        }
+      </style>
+      
+          
+      <style>
+        .highlighted-section {
+          outline: 2px solid #3F20FB;
+          background-color: rgba(63, 32, 251, 0.1);
+        }
+      
+        .edit-button {
+          position: absolute;
+          z-index: 1000;
+        }
+      </style>
+
+
+    <style>
+    /* Dark mode styles*/
+    .dark body {
+        background-color: #1f2937;
+        color: #f9fafb;
+    }
+    
+    .dark .bg-white {
+        background-color: #374151;
+    }
+    
+    .dark .bg-\[\#f8f9fa\] {
+        background-color: #1f2937;
+    }
+    
+    .dark .text-gray-600 {
+        color: #d1d5db;
+    }
+    
+    .dark .text-\[\#001845\] {
+        color: #f9fafb;
+    }
+    
+    .dark .border-white {
+        border-color: #374151;
+    }
+    
+    /* Mobile menu styles */
+    .mobile-menu {
+        display: none;
+        position: fixed;
+        top: 60px;
+        left: 0;
+        right: 0;
+        background-color: white;
+        padding: 1rem;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        z-index: 40;
+        flex-direction: column;
+    }
+    
+    .mobile-menu.active {
+        display: flex;
+    }
+    
+    .mobile-menu a {
+        padding: 0.75rem 0;
+        border-bottom: 1px solid #e5e7eb;
+        color: #4b5563;
+    }
+    
+    .dark .mobile-menu {
+        background-color: #374151;
+    }
+    
+    .dark .mobile-menu a {
+        border-color: #4b5563;
+        color: #f9fafb;
+    }
+    </style>
+
+</head>
+
+    
+    <html class="">
+              
+    
+    <body class="h-full text-base-content">
+                    <!-- Header -->
+    <header id="header" class="fixed w-full bg-white shadow-sm z-50">
+        <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <span class="text-2xl font-bold text-[#0466c8] cursor-pointer"><a href="home.html">DB.Admin</a></span>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex space-x-8">
+                    <a href="home.html" class="text-[#001845] hover:text-[#001845] cursor-pointer">Home</a>
+                    <a href="about.html" class="text-gray-600 hover:text-[#001845] cursor-pointer">About</a>
+                    <a href="certificates.html" class="text-gray-600 border-b-2 border-[#0466c8] cursor-pointer">Certificates</a>
+                    <a href="projects.html" class="text-gray-600 hover:text-[#001845] cursor-pointer">Projects</a>
+                    <a href="contact.html" class="text-gray-600 hover:text-[#001845] cursor-pointer">Contact</a>
+            </div>
+    
+            <!-- Mobile Menu Button -->
+            <button type="button" id="mobile-menu-toggle" aria-label="Open menu" class="md:hidden text-[#001845]">
+                <i class="fa-solid fa-bars text-2xl"></i>
+            </button>
+        </nav>
+    </header>
+    
+    <!-- Mobile Menu -->
+<div id="mobile-menu" class="mobile-menu">
+    <a href="home.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="certificates.html" class="font-medium">Certificates</a>
+    <a href="projects.html">Projects</a>
+    <a href="contact.html">Contact</a>
+</div>
+
+    <!-- Main Content -->
+    <main class="min-h-screen pt-20 bg-[#f8f9fa]">
+        <!-- Certificates Section -->
+        <section id="certificates" class="container mx-auto px-4 py-16">
+            <!-- Section Header -->
+            <div class="text-center mb-16">
+                <h1 class="text-4xl font-bold text-[#001845] mb-4">Professional Certifications</h1>
+                <div class="h-1 w-24 bg-[#0466c8] mx-auto"></div>
+            </div>
+    
+            <!-- Timeline -->
+            <div class="relative max-w-4xl mx-auto">
+                <!-- Timeline Line -->
+                <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-[#0466c8]/20"></div>
+    
+                <!-- Certification Items -->
+                <div id="cert-1" class="relative mb-16">
+                    <div class="flex items-center justify-center mb-4">
+                        <div class="bg-[#0466c8] text-white px-6 py-1 rounded-full text-sm">2025</div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-lg p-8 relative hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                        <div class="absolute top-1/2 -translate-y-1/2 -left-3 w-6 h-6 bg-[#0466c8] rounded-full border-4 border-white"></div>
+                        <h3 class="text-xl font-bold text-[#001845] mb-2">Oracle Database Administrator Certified Master</h3>
+                        <p class="text-[#0466c8] font-medium mb-2">Oracle Corporation</p>
+                        <p class="text-gray-600">Highest level of certification for Oracle Database administrators, demonstrating expert-level skills in database architecture, backup and recovery, performance tuning, and security management.</p>
+                    </div>
+                </div>
+    
+                <div id="cert-2" class="relative mb-16">
+                    <div class="flex items-center justify-center mb-4">
+                        <div class="bg-[#0466c8] text-white px-6 py-1 rounded-full text-sm">2024</div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-lg p-8 relative hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                        <div class="absolute top-1/2 -translate-y-1/2 -left-3 w-6 h-6 bg-[#0466c8] rounded-full border-4 border-white"></div>
+                        <h3 class="text-xl font-bold text-[#001845] mb-2">MongoDB Certified DBA Associate</h3>
+                        <p class="text-[#0466c8] font-medium mb-2">MongoDB Inc.</p>
+                        <p class="text-gray-600">Specialized certification in MongoDB database administration, covering cluster deployment, data modeling, performance optimization, and backup procedures.</p>
+                    </div>
+                </div>
+    
+                <div id="cert-3" class="relative mb-16">
+                    <div class="flex items-center justify-center mb-4">
+                        <div class="bg-[#0466c8] text-white px-6 py-1 rounded-full text-sm">2023</div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-lg p-8 relative hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                        <div class="absolute top-1/2 -translate-y-1/2 -left-3 w-6 h-6 bg-[#0466c8] rounded-full border-4 border-white"></div>
+                        <h3 class="text-xl font-bold text-[#001845] mb-2">AWS Certified Database - Specialty</h3>
+                        <p class="text-[#0466c8] font-medium mb-2">Amazon Web Services</p>
+                        <p class="text-gray-600">Advanced certification validating expertise in AWS database services, including RDS, DynamoDB, and Redshift, focusing on design, migration, and maintenance.</p>
+                    </div>
+                </div>
+    
+                <div id="cert-4" class="relative">
+                    <div class="flex items-center justify-center mb-4">
+                        <div class="bg-[#0466c8] text-white px-6 py-1 rounded-full text-sm">2022</div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-lg p-8 relative hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                        <div class="absolute top-1/2 -translate-y-1/2 -left-3 w-6 h-6 bg-[#0466c8] rounded-full border-4 border-white"></div>
+                        <h3 class="text-xl font-bold text-[#001845] mb-2">Microsoft Certified: Azure Database Administrator Associate</h3>
+                        <p class="text-[#0466c8] font-medium mb-2">Microsoft</p>
+                        <p class="text-gray-600">Comprehensive certification for implementing and managing cloud databases on Microsoft Azure, including SQL Database and Cosmos DB.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer id="footer" class="bg-[#0353a4] text-white">
+        <div class="container mx-auto px-4 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- About Column -->
+                <div class="space-y-4">
+                    <h3 class="text-xl font-bold">About Me</h3>
+                    <p class="text-white/80">Dedicated database administrator with a passion for optimizing data systems and ensuring seamless operations.</p>
+                    <div class="flex gap-4 text-xl">
+                        <i class="fa-brands fa-linkedin cursor-pointer hover:text-white/80"></i>
+                        <i class="fa-brands fa-github cursor-pointer hover:text-white/80"></i>
+                        <i class="fa-brands fa-facebook cursor-pointer hover:text-white/80"></i>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div class="space-y-4">
+                    <h3 class="text-xl font-bold">Quick Links</h3>
+                    <div class="flex flex-col space-y-2">
+                        <ul>
+                        <li><a href="home.html"  class="text-gray-300 hover:text-white cursor-pointer">Home</a></li>
+                        <li> <a href="about.html"  class="text-gray-300 hover:text-white cursor-pointer">About</a></li>
+                        <li><a href="certificates.html" class="text-gray-300 hover:text-white cursor-pointer">Certificates</a></li>
+                        <li> <a href="projects.html"  class="text-gray-300 hover:text-white cursor-pointer">Projects</a></li>
+                        <li><a href="contact.html"  class="text-gray-300 hover:text-white cursor-pointer">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Contact Info -->
+                <div class="space-y-4">
+                    <h3 class="text-xl font-bold">Contact Info</h3>
+                    <div class="flex flex-col space-y-2">
+                        <a href="mailto:cortez@dbadmin.com" class="flex items-center gap-2 hover:text-white/80">
+                            <i class="fa-regular fa-envelope"></i>
+                            cortez@dbadmin.com
+                        </a>
+                        <a href="tel:+63 912 032 7293" class="flex items-center gap-2 hover:text-white/80">
+                            <i class="fa-solid fa-phone"></i>
+                            +63 912 032 7293
+                        </a>
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-location-dot"></i>
+                            Pilar, Bataan, Philippines
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 pt-4 border-t border-white/20 text-center text-white/60">
+                <p>&copy; 2025 DB.Admin. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+
+    <!-- Dark Mode Toggle -->
+    <button type="button" id="dark-mode-toggle" aria-label="Toggle Dark Mode" class="fixed bottom-6 right-6 w-12 h-12 bg-[#0466c8] text-white rounded-full shadow-lg flex items-center justify-center hover:bg-[#0353a4] transition">
+        <i class="fa-solid fa-moon" id="moon-icon"></i>
+        <i class="fa-solid fa-sun" id="sun-icon" style="display: none;"></i>
+</button>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Dark Mode Toggle
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        const htmlElement = document.documentElement;
+        const moonIcon = document.getElementById('moon-icon');
+        const sunIcon = document.getElementById('sun-icon');
+        
+        // Function to toggle dark mode
+        function toggleDarkMode() {
+            htmlElement.classList.toggle('dark');
+            
+            if (htmlElement.classList.contains('dark')) {
+                moonIcon.style.display = 'none';
+                sunIcon.style.display = 'block';
+                
+                try {
+                    localStorage.setItem('theme', 'dark');
+                } catch (e) {
+                    console.log('Unable to access localStorage');
+                }
+            } else {
+                moonIcon.style.display = 'block';
+                sunIcon.style.display = 'none';
+                
+                try {
+                    localStorage.setItem('theme', 'light');
+                } catch (e) {
+                    console.log('Unable to access localStorage');
+                }
+            }
+        }
+        
+        // Check for theme preference
+        try {
+            if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                htmlElement.classList.add('dark');
+                moonIcon.style.display = 'none';
+                sunIcon.style.display = 'block';
+            }
+        } catch (e) {
+            // Silent fail - no access to localStorage
+        }
+        
+        // Add click handler to toggle button
+        darkModeToggle.addEventListener('click', toggleDarkMode);
+        
+        // Mobile Menu Toggle
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        if (mobileMenuToggle && mobileMenu) {
+            mobileMenuToggle.addEventListener('click', function() {
+                mobileMenu.classList.toggle('active');
+                
+                // Toggle icon
+                const icon = mobileMenuToggle.querySelector('i');
+                if (mobileMenu.classList.contains('active')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+            
+            // Close menu when clicking outside
+            document.addEventListener('click', function(event) {
+                if (!mobileMenu.contains(event.target) && !mobileMenuToggle.contains(event.target) && mobileMenu.classList.contains('active')) {
+                    mobileMenu.classList.remove('active');
+                    const icon = mobileMenuToggle.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+        }
+    });
+</script>
+ </body>
+</html>
+              
+
+
+
+
+
+
