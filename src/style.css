@@ -2880,3 +2880,17 @@
   syntax: "*";
   inherits: false;
 }
+
+/* Dark mode toggle icons */
+#sun-icon {
+  display: none;
+}
+
+/* When dark mode is active */
+.dark-mode #moon-icon {
+  display: none;
+}
+
+.dark-mode #sun-icon {
+  display: block;
+}

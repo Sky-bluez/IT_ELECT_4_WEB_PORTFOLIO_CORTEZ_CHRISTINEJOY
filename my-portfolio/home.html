@@ -9,7 +9,7 @@
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <script>
         window.FontAwesomeConfig = {
-            autoReplaceSvg: 'nest', // Options: 'nest', 'remove', 'replace'
+            autoReplaceSvg: 'nest', 
         };
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -158,13 +158,13 @@
                         </p>
                         
                         <div class="flex space-x-4">
-                            <button class="px-6 py-3 bg-[#0466c8] text-white rounded-lg hover:bg-[#0353a4] transition"> 
-                                <a href="contact.html">Contact Me</a> 
-                            </button>
-                            <button class="px-6 py-3 border-2 border-[#0466c8] text-[#0466c8] rounded-lg hover:bg-gray-100 transition">
-                                <a href="projects.html">View Projects</a>
-                            </button>
-                        </div>
+    <a href="contact.html" class="px-6 py-3 bg-[#0466c8] text-white rounded-lg hover:bg-[#0353a4] transition inline-block">
+        Contact Me
+    </a>
+    <a href="projects.html" class="px-6 py-3 border-2 border-[#0466c8] text-[#0466c8] rounded-lg hover:bg-gray-100 transition inline-block">
+        View Projects
+    </a>
+</div>
                         
                         <div class="flex space-x-6 text-gray-600">
                             <a href="#" aria-label="Visit my linkedin page" class="hover:text-[#0466c8] transition">
@@ -248,8 +248,8 @@
     
         <!-- Dark Mode Toggle -->
         <button type="button" id="dark-mode-toggle" aria-label="Toggle Dark Mode" class="fixed bottom-6 right-6 w-12 h-12 bg-[#0466c8] text-white rounded-full shadow-lg flex items-center justify-center hover:bg-[#0353a4] transition">
-            <i class="fa-solid fa-moon" id="moon-icon"></i>
-            <i class="fa-solid fa-sun" id="sun-icon" style="display: none;"></i>
+        <i class="fa-solid fa-moon" id="moon-icon"></i>
+         <i class="fa-solid fa-sun" id="sun-icon"></i>
         </button>
     </div>
 
